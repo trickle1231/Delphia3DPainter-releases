@@ -1,0 +1,6 @@
+site_name: Delphia3DPainter Wiki
+site_description: Documentation for Delphia3DPainter
+site_author: D31
+
+theme:
+  name: material
