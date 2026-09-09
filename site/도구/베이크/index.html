@@ -54,6 +54,53 @@
 
     
     
+  
+  <style>
+    .wiki-translate-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      min-height: 2.25rem;
+      padding: 0.25rem 0;
+    }
+
+    .wiki-translate-label {
+      color: var(--md-default-fg-color--light);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    #google_translate_element {
+      min-width: 9rem;
+    }
+
+    #google_translate_element select {
+      min-height: 1.9rem;
+      padding: 0.2rem 0.4rem;
+      color: var(--md-default-fg-color);
+      background: var(--md-default-bg-color);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.2rem;
+    }
+
+    .goog-te-banner-frame,
+    body > .skiptranslate {
+      display: none !important;
+    }
+
+    body {
+      top: 0 !important;
+    }
+
+    @media screen and (max-width: 44.9375em) {
+      .wiki-translate-bar {
+        justify-content: flex-start;
+        padding-left: 0.75rem;
+      }
+    }
+  </style>
+
   </head>
   
   
@@ -72,6 +119,19 @@
       
     </div>
     <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="wiki-translate-bar">
+  <span class="wiki-translate-label">언어</span>
+  <div id="google_translate_element"></div>
+</div>
+
+          </div>
+          
+        </aside>
       
     </div>
     
@@ -2116,8 +2176,20 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
+  
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "ko",
+        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        autoDisplay: false
+      }, "google_translate_element");
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   </body>
 </html>

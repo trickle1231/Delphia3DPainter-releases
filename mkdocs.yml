@@ -4,6 +4,7 @@ site_author: D31
 
 theme:
   name: material
+  custom_dir: docs/overrides
   features:
     - navigation.tabs
     - navigation.top
