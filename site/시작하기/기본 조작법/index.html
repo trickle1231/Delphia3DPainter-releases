@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2185,7 +2178,7 @@
 </ul>
 <p>브러시·지우개 설정과 프리셋 관리는 <a href="../../%EB%8F%84%EA%B5%AC/%EB%B8%8C%EB%9F%AC%EC%8B%9C%20%EB%B0%8F%20%EC%A7%80%EC%9A%B0%EA%B0%9C/">브러시 및 지우개</a>를, 선택과 변형은 <a href="../../%ED%8E%B8%EC%A7%91/%EC%84%A0%ED%83%9D%EA%B3%BC%20%EB%B3%80%ED%98%95/">선택과 변형</a>을 참고하세요.</p>
 <h2 id="_3">화면 이동</h2>
-<p>2D 뷰는 확대·이동·회전을 지원합니다. 보기 상태 초기화 단축키는 <code>Alt+R</code>(회전), <code>Alt+G</code>(이동), <code>Alt+S</code>(확대)입니다. 창 배치와 패널 표시는 <code>창</code> 메뉴에서 조절합니다.</p>
+<p>2D 뷰는 확대·이동·회전을 지원합니다. 보기 상태 초기화 단축키는 <code>Alt+R</code>(회전), <code>Alt+G</code>(이동), <code>Alt+S</code>(확대)입니다. 창 배치와 패널 표시는 <strong>창</strong> 메뉴에서 조절합니다.</p>
 
 
 
@@ -2250,9 +2243,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

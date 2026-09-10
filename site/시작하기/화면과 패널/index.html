@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2727,7 +2720,7 @@
 
 
 <h1 id="_1">화면과 패널</h1>
-<p>델피아 3D 페인터는 가운데의 2D UV 뷰와 3D 모델 뷰, 그리고 도킹 가능한 패널로 구성됩니다. 패널은 <code>창</code> 메뉴에서 표시하거나 숨길 수 있으며, <code>창 &gt; 레이아웃</code>에서 작업 목적에 맞게 배치할 수 있습니다.</p>
+<p>델피아 3D 페인터는 가운데의 2D UV 뷰와 3D 모델 뷰, 그리고 도킹 가능한 패널로 구성됩니다. 패널은 <strong>창</strong> 메뉴에서 표시하거나 숨길 수 있으며, <strong>창 &gt; 레이아웃</strong>에서 작업 목적에 맞게 배치할 수 있습니다.</p>
 <h2 id="_2">뷰 영역</h2>
 <h3 id="2d">2D 텍스처 뷰</h3>
 <p>현재 활성 캔버스의 UV 텍스처를 픽셀 단위로 편집하는 영역입니다. 2D·3D 뷰의 작업 차이와 권장 흐름은 <a href="../2D%EC%99%80%203D%20%EC%9E%91%EC%97%85/">2D와 3D 작업</a>을 참고하세요.</p>
@@ -2752,13 +2745,13 @@
 <p>자주 쓰는 색을 모아 두고 선택하는 팔레트 패널입니다. 컬러 서클과 탭으로 전환해 사용할 수 있습니다.</p>
 <h2 id="_9">보조 패널과 대화상자</h2>
 <h3 id="_10">캔버스 설정</h3>
-<p><code>파일 &gt; 캔버스 설정...</code>에서 재질과 텍스처 캔버스의 연결을 확인하고 변경합니다. 재질-캔버스와 캔버스 목록 탭이 있으며, 새 캔버스 생성·이미지 불러오기·할당에 사용합니다.</p>
+<p><strong>파일 &gt; 캔버스 설정...</strong>에서 재질과 텍스처 캔버스의 연결을 확인하고 변경합니다. 재질-캔버스와 캔버스 목록 탭이 있으며, 새 캔버스 생성·이미지 불러오기·할당에 사용합니다.</p>
 <h3 id="_11">소스 브라우저</h3>
-<p><code>창 &gt; 소스 브라우저</code>에서 브러시 팁과 소스 텍스처를 관리합니다. 등록한 소스는 브러시 팁 또는 소스 텍스처 레이어로 재사용할 수 있습니다.</p>
+<p><strong>창 &gt; 소스 브라우저</strong>에서 브러시 팁과 소스 텍스처를 관리합니다. 등록한 소스는 브러시 팁 또는 소스 텍스처 레이어로 재사용할 수 있습니다.</p>
 <h3 id="_12">아카이브</h3>
-<p><code>창 &gt; 아카이브</code>는 텍스처와 관련 소스를 보관·재사용하는 작업 공간입니다. 현재 캔버스에 연결된 파일을 바꾸기 전에 보관본을 남겨두는 용도로 활용할 수 있습니다.</p>
+<p><strong>창 &gt; 아카이브</strong>는 텍스처와 관련 소스를 보관·재사용하는 작업 공간입니다. 현재 캔버스에 연결된 파일을 바꾸기 전에 보관본을 남겨두는 용도로 활용할 수 있습니다.</p>
 <h3 id="_13">베이크 패널</h3>
-<p><code>베이크 &gt; 베이크 패널...</code>에서 AO, Curvature, Cavity 맵을 생성합니다. 자세한 내용은 <a href="../../%EB%8F%84%EA%B5%AC/%EB%B2%A0%EC%9D%B4%ED%81%AC/">베이크</a>를 참고하세요.</p>
+<p><strong>베이크 &gt; 베이크 패널...</strong>에서 AO, Curvature, Cavity 맵을 생성합니다. 자세한 내용은 <a href="../../%EB%8F%84%EA%B5%AC/%EB%B2%A0%EC%9D%B4%ED%81%AC/">베이크</a>를 참고하세요.</p>
 
 
 
@@ -2823,9 +2816,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

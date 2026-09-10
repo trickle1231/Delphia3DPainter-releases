@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2087,7 +2080,7 @@
 
 <h1 id="_1">필터</h1>
 <p>필터는 활성 래스터 레이어에 적용됩니다. 선택 영역이 있으면 그 영역에만 적용됩니다. 그룹 레이어와 잠긴 레이어에는 적용할 수 없습니다.</p>
-<p><code>필터</code> 메뉴에서 색상 반전, HSV 조정 (<code>Ctrl+U</code>), 톤 커브 (<code>Ctrl+M</code>), 컬러 밸런스, 레벨 (<code>Ctrl+L</code>)을 사용할 수 있습니다.</p>
+<p><strong>필터</strong> 메뉴에서 색상 반전, HSV 조정 (<code>Ctrl+U</code>), 톤 커브 (<code>Ctrl+M</code>), 컬러 밸런스, 레벨 (<code>Ctrl+L</code>)을 사용할 수 있습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2179,9 +2172,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2238,15 +2231,15 @@
 <p><code>.dpp</code>는 최종 이미지가 아니라 이어서 편집하기 위한 작업 파일입니다. 모델 파일을 다른 위치로 옮긴 뒤에는 프로젝트에서 모델 경로를 다시 확인하세요.</p>
 <h2 id="_3">모델과 캔버스</h2>
 <ul>
-<li><code>모델 불러오기 (.obj/.fbx/.glb)</code>는 모델과 UV를 엽니다. 모델에 유효한 UV가 있어야 2D 텍스처 작업이 올바르게 표시됩니다.</li>
-<li><code>캔버스 설정...</code>은 재질, 텍스처 슬롯, 캔버스 해상도를 관리합니다.</li>
-<li><code>최근 모델</code>은 최근에 불러온 모델 목록을 제공합니다.</li>
+<li><strong>모델 불러오기 (.obj/.fbx/.glb)</strong>는 모델과 UV를 엽니다. 모델에 유효한 UV가 있어야 2D 텍스처 작업이 올바르게 표시됩니다.</li>
+<li><strong>캔버스 설정...</strong>은 재질, 텍스처 슬롯, 캔버스 해상도를 관리합니다.</li>
+<li><strong>최근 모델</strong>은 최근에 불러온 모델 목록을 제공합니다.</li>
 </ul>
 <h2 id="_4">내보내기와 교환</h2>
 <ul>
-<li><code>Export Model (.fbx/.obj)...</code>는 작업한 모델을 OBJ 또는 FBX로 저장합니다.</li>
-<li><code>이미지 내보내기...</code>는 선택한 텍스처의 합성 결과를 이미지로 저장합니다.</li>
-<li><code>OpenRaster 가져오기/내보내기 (.ora)</code>는 레이어 구조를 다른 이미지 편집 프로그램과 주고받을 때 사용합니다.</li>
+<li><strong>Export Model (.fbx/.obj)...</strong>는 작업한 모델을 OBJ 또는 FBX로 저장합니다.</li>
+<li><strong>이미지 내보내기...</strong>는 선택한 텍스처의 합성 결과를 이미지로 저장합니다.</li>
+<li><strong>OpenRaster 가져오기/내보내기 (.ora)</strong>는 레이어 구조를 다른 이미지 편집 프로그램과 주고받을 때 사용합니다.</li>
 </ul>
 <p>자세한 형식별 주의사항은 <a href="../%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%A0%80%EC%9E%A5%20%EB%B0%8F%20%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0/">저장 및 내보내기</a>를 참고하세요.</p>
 
@@ -2313,9 +2306,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

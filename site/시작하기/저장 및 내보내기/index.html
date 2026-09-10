@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2311,14 +2304,14 @@
 
 <h1 id="_1">저장 및 내보내기</h1>
 <h2 id="dpp">프로젝트 저장: <code>.dpp</code></h2>
-<p><code>파일 &gt; 프로젝트 저장 (.dpp)</code> 또는 <code>Ctrl+S</code>로 현재 프로젝트를 저장합니다. 처음 저장하거나 사본이 필요하면 <code>파일 &gt; 다른 이름으로 프로젝트 저장 (.dpp)...</code> (<code>Ctrl+Shift+S</code>)를 사용하세요.</p>
+<p><strong>파일 &gt; 프로젝트 저장 (.dpp)</strong> 또는 <code>Ctrl+S</code>로 현재 프로젝트를 저장합니다. 처음 저장하거나 사본이 필요하면 <strong>파일 &gt; 다른 이름으로 프로젝트 저장 (.dpp)...</strong> (<code>Ctrl+Shift+S</code>)를 사용하세요.</p>
 <p><code>.dpp</code>는 델피아 전용 프로젝트 형식입니다. 모델 경로, 캔버스와 레이어, 마스크 등 편집 상태를 보관하므로 이어서 작업할 원본으로 사용합니다. 모델 파일을 옮기거나 교체하면 프로젝트에서 모델 위치를 다시 찾아야 할 수 있습니다.</p>
 <h2 id="_2">이미지 내보내기</h2>
-<p><code>파일 &gt; 이미지 내보내기...</code> 또는 <code>Ctrl+Shift+E</code>를 선택합니다. 선택한 텍스처의 합성 결과를 PNG, JPEG, TGA로 저장할 수 있습니다. 투명도가 필요하면 PNG 또는 TGA를 사용하세요. 내보내기 전에는 올바른 재질과 텍스처 슬롯을 선택했는지 확인하세요.</p>
+<p><strong>파일 &gt; 이미지 내보내기...</strong> 또는 <code>Ctrl+Shift+E</code>를 선택합니다. 선택한 텍스처의 합성 결과를 PNG, JPEG, TGA로 저장할 수 있습니다. 투명도가 필요하면 PNG 또는 TGA를 사용하세요. 내보내기 전에는 올바른 재질과 텍스처 슬롯을 선택했는지 확인하세요.</p>
 <h2 id="openraster-ora">OpenRaster: <code>.ora</code></h2>
-<p><code>파일 &gt; OpenRaster 내보내기 (.ora)...</code>는 레이어와 그룹 구조를 포함하는 OpenRaster 파일을 만듭니다. Krita, GIMP 등과 레이어 작업을 주고받을 때 유용합니다. <code>파일 &gt; OpenRaster 가져오기 (.ora)...</code>로 다시 가져올 수 있지만, 다른 프로그램의 모든 레이어 속성이나 효과가 동일하게 재현되지는 않을 수 있습니다.</p>
+<p><strong>파일 &gt; OpenRaster 내보내기 (.ora)...</strong>는 레이어와 그룹 구조를 포함하는 OpenRaster 파일을 만듭니다. Krita, GIMP 등과 레이어 작업을 주고받을 때 유용합니다. <strong>파일 &gt; OpenRaster 가져오기 (.ora)...</strong>로 다시 가져올 수 있지만, 다른 프로그램의 모든 레이어 속성이나 효과가 동일하게 재현되지는 않을 수 있습니다.</p>
 <h2 id="_3">모델 내보내기</h2>
-<p><code>파일 &gt; Export Model (.fbx/.obj)...</code>에서 모델을 OBJ 또는 FBX로 내보낼 수 있습니다. 텍스처 포함 방식을 확인하고, 모델과 생성된 텍스처를 같은 폴더 구조로 보관하세요.</p>
+<p><strong>파일 &gt; Export Model (.fbx/.obj)...</strong>에서 모델을 OBJ 또는 FBX로 내보낼 수 있습니다. 텍스처 포함 방식을 확인하고, 모델과 생성된 텍스처를 같은 폴더 구조로 보관하세요.</p>
 
 
 
@@ -2383,9 +2376,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

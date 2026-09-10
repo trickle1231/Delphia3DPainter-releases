@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2200,17 +2193,17 @@
 <p>선택 메뉴는 2D 텍스처 픽셀과 3D 모델 면 중 작업 대상을 정합니다. 선택 범위가 있으면 브러시, 채우기, 필터, 마스크 편집이 그 범위에 제한됩니다.</p>
 <h2 id="2d">2D 선택</h2>
 <ul>
-<li><code>자유형 올가미</code>: 자유롭게 그린 영역을 선택합니다.</li>
-<li><code>사각</code>: 직사각형 영역을 선택합니다.</li>
-<li><code>꺾은 선</code>: 여러 점으로 다각형 영역을 지정합니다.</li>
-<li><code>자유 변형</code> (<code>Ctrl+T</code>): 선택한 픽셀을 이동하고 변형합니다. <code>Enter</code>로 확정하고 <code>Esc</code>로 취소합니다.</li>
+<li><strong>자유형 올가미</strong>: 자유롭게 그린 영역을 선택합니다.</li>
+<li><strong>사각</strong>: 직사각형 영역을 선택합니다.</li>
+<li><strong>꺾은 선</strong>: 여러 점으로 다각형 영역을 지정합니다.</li>
+<li><strong>자유 변형</strong> (<code>Ctrl+T</code>): 선택한 픽셀을 이동하고 변형합니다. <code>Enter</code>로 확정하고 <code>Esc</code>로 취소합니다.</li>
 </ul>
 <h2 id="3d">3D 선택</h2>
 <ul>
-<li><code>면</code>: 모델 표면의 면을 직접 선택합니다.</li>
-<li><code>올가미</code>: 화면에 그린 자유형 범위와 겹치는 면을 선택합니다.</li>
-<li><code>사각형</code>: 화면의 사각형 범위와 겹치는 면을 선택합니다.</li>
-<li><code>Mesh</code>: 메시 단위 선택을 사용합니다.</li>
+<li><strong>면</strong>: 모델 표면의 면을 직접 선택합니다.</li>
+<li><strong>올가미</strong>: 화면에 그린 자유형 범위와 겹치는 면을 선택합니다.</li>
+<li><strong>사각형</strong>: 화면의 사각형 범위와 겹치는 면을 선택합니다.</li>
+<li><strong>Mesh</strong>: 메시 단위 선택을 사용합니다.</li>
 </ul>
 <h2 id="_2">공통 명령</h2>
 <table>
@@ -2314,9 +2307,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }

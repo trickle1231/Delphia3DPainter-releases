@@ -61,25 +61,28 @@
     .wiki-translate-bar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      min-height: 2.25rem;
-      padding: 0.25rem 0;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 1.5rem;
+      margin: 0;
+      padding: 0 0.35rem;
     }
 
     .wiki-translate-label {
       color: var(--md-default-fg-color--light);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
 
     #google_translate_element {
-      min-width: 9rem;
+      min-width: 7rem;
     }
 
     #google_translate_element select {
-      min-height: 1.9rem;
-      padding: 0.2rem 0.4rem;
+      min-height: 1.45rem;
+      height: 1.45rem;
+      padding: 0.05rem 0.3rem;
+      font-size: 0.7rem;
       color: var(--md-default-fg-color);
       background: var(--md-default-bg-color);
       border: 1px solid var(--md-default-fg-color--lightest);
@@ -95,11 +98,14 @@
       top: 0 !important;
     }
 
-    @media screen and (max-width: 44.9375em) {
-      .wiki-translate-bar {
-        justify-content: flex-start;
-        padding-left: 0.75rem;
-      }
+    .wiki-header-translate {
+      display: flex;
+      align-items: center;
+      margin-left: 0.35rem;
+      padding: 0.18rem 0.3rem;
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.25rem;
     }
   </style>
 
@@ -121,19 +127,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-<div class="wiki-translate-bar">
-  <span class="wiki-translate-label">언어</span>
-  <div id="google_translate_element"></div>
-</div>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -2205,9 +2198,9 @@
 </table>
 <h2 id="_3">정리와 합성</h2>
 <ul>
-<li><code>레이어 복사</code>, <code>레이어 잘라내기</code>, <code>레이어 붙여넣기</code>로 레이어를 다른 위치나 프로젝트에 옮깁니다.</li>
-<li><code>선택 레이어를 그룹으로 묶기</code> (<code>Ctrl+G</code>)는 여러 레이어를 하나의 그룹으로 관리합니다.</li>
-<li><code>아래 레이어 병합</code> (<code>Ctrl+E</code>)은 현재 레이어를 바로 아래 레이어에 합칩니다. 병합 전 원본을 보존하려면 먼저 복사하거나 프로젝트를 저장하세요.</li>
+<li><strong>레이어 복사</strong>, <strong>레이어 잘라내기</strong>, <strong>레이어 붙여넣기</strong>로 레이어를 다른 위치나 프로젝트에 옮깁니다.</li>
+<li><strong>선택 레이어를 그룹으로 묶기</strong> (<code>Ctrl+G</code>)는 여러 레이어를 하나의 그룹으로 관리합니다.</li>
+<li><strong>아래 레이어 병합</strong> (<code>Ctrl+E</code>)은 현재 레이어를 바로 아래 레이어에 합칩니다. 병합 전 원본을 보존하려면 먼저 복사하거나 프로젝트를 저장하세요.</li>
 </ul>
 <p>레이어의 표시, 불투명도, 혼합 모드, 잠금과 마스크 사용법은 <a href="../%ED%8E%B8%EC%A7%91/%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%A7%88%EC%8A%A4%ED%81%AC/">레이어와 마스크</a>에 정리되어 있습니다.</p>
 
@@ -2274,9 +2267,24 @@
     
   <script>
     function googleTranslateElementInit() {
+      const header = document.querySelector(".md-header__inner");
+      const search = header && header.querySelector(".md-search");
+      if (!header || !search) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "wiki-header-translate";
+      wrapper.innerHTML =
+        '<div class="wiki-translate-bar">' +
+        '<span class="wiki-translate-label">언어</span>' +
+        '<div id="google_translate_element"></div>' +
+        '</div>';
+      search.parentNode.insertBefore(wrapper, search.nextSibling);
+
       new google.translate.TranslateElement({
         pageLanguage: "ko",
-        includedLanguages: "en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
+        includedLanguages: "ko,en,ja,zh-CN,zh-TW,es,fr,de,pt,ru",
         autoDisplay: false
       }, "google_translate_element");
     }
