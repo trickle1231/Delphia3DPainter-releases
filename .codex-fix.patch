@@ -1,0 +1,11 @@
+diff --git a/src/drawingtestwidget.cpp b/src/drawingtestwidget.cpp
+--- a/src/drawingtestwidget.cpp
++++ b/src/drawingtestwidget.cpp
+@@ -6718 +6717,0 @@
+-    for (const InterpolatedDab &dab : dabs) {
+@@ -6724,0 +6724 @@
++    for (const InterpolatedDab &dab : dabs) {
+@@ -6726 +6727,0 @@
+-    if (defer2dPreview) {
+@@ -6728,0 +6729 @@
++    if (defer2dPreview) {

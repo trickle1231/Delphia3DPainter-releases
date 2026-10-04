@@ -1,4 +1,5 @@
 site_name: Delphia3DPainter Wiki
+site_url: https://trickle1231.github.io/Delphia3DPainter-releases/
 site_description: Documentation for Delphia3DPainter
 site_author: D31
 
@@ -36,7 +37,9 @@ nav:
       - 선택과 변형: 편집/선택과 변형.md
     - 필터:
       - 필터 메뉴 개요: 필터.md
-      - 필터 사용법: 편집/필터.md
+      - 필터 사용법과 색상 조정: 편집/필터.md
+      - 일반·펄린 노이즈: 편집/노이즈.md
+      - 경사 블러와 워프: 편집/경사 블러와 워프.md
     - 베이크:
       - 베이크 메뉴 개요: 베이크.md
       - 베이크 작업: 도구/베이크.md
